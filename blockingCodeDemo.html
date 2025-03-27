@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script async src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.157.0/three.js"></script> -->
+</head>
+<body>
+    
+
+    <script>
+        // This is what I got from ChatGPT
+/*   
+const fetchPromise = fetch("file.txt");
+
+fetchPromise
+  .then(response => response.text())  // Extract text
+  .then(data => console.log(data))   // Log the data
+  .catch(error => console.error("Error:", error)); // Handle errors
+*/
+
+const fetchPromise = fetch("file.txt");
+
+const textPromise = fetchPromise.then((response) => response.text()); // promise { status: resolved }
+console.log(textPromise) // Here Promise is still pending
+const data = textPromise.then((data) => console.log(data));
+
+
+textPromise.catch((error)=> console.log(error.message)) // promise {status: rejected}
+
+//====================================
+
+
+fetch("db.json").then((res)=> res.json()).then((data)=> console.log(data)).catch((error)=> console.error(error));
+
+    </script>
+</body>
+</html>
